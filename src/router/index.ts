@@ -8,19 +8,6 @@ import NotFound from '@/views/NotFound.vue'
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
   {
     path: '/',
     redirect: '/money'
@@ -37,6 +24,7 @@ const routes: Array<RouteConfig> = [
     path: '/statistics',
     component: Statistics
   },
+  // path: '*' 以下的匹配不到，做404
   {
     path: '*',
     component: NotFound

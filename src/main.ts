@@ -6,7 +6,7 @@ import store from './store'
 import Nav from '@/components/Nav.vue'
 
 Vue.config.productionTip = false
-
+// 将 Nav 组件做成全局组件
 Vue.component('Nav', Nav)
 new Vue({
   router,
