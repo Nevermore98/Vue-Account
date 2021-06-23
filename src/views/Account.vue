@@ -1,9 +1,9 @@
 <template>
-  <Layout>Money.vue</Layout>
+  <Layout>Account.vue</Layout>
 </template>
 
 <script lang="ts">
 export default {
-  name: "Money",
+  name: 'Account',
 }
 </script>
