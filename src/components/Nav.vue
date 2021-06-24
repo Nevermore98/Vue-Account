@@ -1,18 +1,18 @@
 <template>
-  <nav>
-    <router-link to="/account" class="item">
+  <div class="nav-wrapper">
+    <router-link active-class="selected" class="item" to="/account">
       <Icon name="account"/>
       记账
     </router-link>
-    <router-link to="/labels" class="item">
+    <router-link active-class="selected" class="item" to="/labels">
       <Icon name="labels"/>
       标签
     </router-link>
-    <router-link to="/statistics" class="item">
-      <Icon name="statistics-circle"/>
+    <router-link active-class="selected" class="item" to="/statistics">
+      <Icon name="statistics-pie-chart"/>
       统计
     </router-link>
-  </nav>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,10 +22,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-nav {
+@import "~@/assets/styles/helper.scss";
+
+.nav-wrapper {
+  @extend %outerShadow;
   display: flex;
   flex-direction: row;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 
   > .item {
     padding: 2px 0;
@@ -34,12 +36,15 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .icon {
+      width: 32px;
+      height: 32px;
+    }
   }
 
-  .icon {
-    width: 32px;
-    height: 32px;
+  > .item.selected {
+    color: $color-highlight;
   }
-
 }
 </style>
