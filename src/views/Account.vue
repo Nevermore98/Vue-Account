@@ -1,22 +1,30 @@
 <template>
   <Layout class-prefix="layout">
     <NumberPad/>
-    <Types xxx="hi"/>
+    <Types/>
     <Remark/>
-    <Tags/>
+    <Tags :data-source="tags"/>
   </Layout>
 </template>
 
-<script lang="ts">
-import NumberPad from '@/components/Account/NumberPad.vue';
-import Types from '@/components/Account/Types.vue';
-import Remark from '@/components/Account/Remark.vue';
-import Tags from '@/components/Account/Tags.vue';
+// 使用 JS
+<script lang="js">
+import NumberPad from '@/components/Account/NumberPad.vue'
+import Types from '@/components/Account/Types.vue'
+import Remark from '@/components/Account/Remark.vue'
+import Tags from '@/components/Account/Tags.vue'
 
 export default {
   name: 'Account',
   components: {Tags, Remark, Types, NumberPad},
-};
+  data() {
+    return {
+      tags: ['衣', '食', '住', '行']
+    }
+  }
+}
+
+
 </script>
 <!--不带 scoped -->
 <style lang="scss">
