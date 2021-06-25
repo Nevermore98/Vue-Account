@@ -2,15 +2,20 @@
   <div>
     <label class="remark">
       <span class="name">备注</span>
-      <input placeholder="在这里添加备注" type="text">
+      <input type="text" v-model="value"
+             placeholder="在这里添加备注">
     </label>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'Remark'
-};
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+
+@Component
+export default class Remark extends Vue {
+  value = '';
+}
 </script>
 
 <style lang="scss" scoped>
