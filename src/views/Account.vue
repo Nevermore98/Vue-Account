@@ -3,7 +3,7 @@
     <NumberPad/>
     <Types/>
     <Remark/>
-    <Tags :data-source="tags"/>
+    <Tags :data-source.sync="tags"/>
   </Layout>
 </template>
 
