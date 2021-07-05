@@ -31,6 +31,7 @@ export default class Tags extends Vue {
       // 没有选中的，压入数组
       this.selectedTags.push(tag);
     }
+    this.$emit('update:value', this.selectedTags);
   }
 
   create() {

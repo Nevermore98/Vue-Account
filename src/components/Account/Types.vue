@@ -1,27 +1,31 @@
 <template>
   <div>
     <ul class="types">
-      <li :class="type === '-' && 'selected'" @click="selectType('-')">支出</li>
-      <li :class="type === '+' && 'selected'" @click="selectType('+')">收入</li>
+      <li :class="value === '-' && 'selected'" @click="selectType('-')">支出</li>
+      <li :class="value === '+' && 'selected'" @click="selectType('+')">收入</li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
-
+import {Component, Prop} from 'vue-property-decorator';
 @Component
 export default class Types extends Vue {
-  type = '-';
+  @Prop() readonly value!: string;
 
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('类型错误');
     }
-    this.type = type;
+    this.$emit('update:value', type);
   }
 
+  // 在外界修改，不需要监听组件
+  // @Watch('type')
+  // onTypeChanged(value: string) {
+  //   this.$emit('update:value', value);
+  // }
 }
 </script>
 
