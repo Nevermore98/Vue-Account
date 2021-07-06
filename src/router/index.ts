@@ -26,7 +26,7 @@ const routes: Array<RouteConfig> = [
     component: Statistics
   },
   {
-    path: '/labels/edit',
+    path: '/labels/edit/:id',
     component: EditLabel
   },
   // path: '*' 以下的匹配不到，做404
