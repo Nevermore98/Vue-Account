@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="remark">
+    <label class="formItem">
       <span class="name">{{ this.fieldName }}</span>
       <input v-model="value" :placeholder="this.placeholder"
              type="text">
@@ -26,9 +26,8 @@ export default class FormItem extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.remark {
+.formItem {
   font-size: 14px;
-  background: #f5f5f5;
   display: flex;
   align-items: center;
   padding-left: 16px;
@@ -38,7 +37,7 @@ export default class FormItem extends Vue {
   }
 
   input {
-    height: 64px;
+    height: 44px;
     flex-grow: 1;
     background: transparent;
     border: none;

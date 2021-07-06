@@ -3,10 +3,12 @@
     {{ recordList }}
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
     <Types :value.sync="record.type"/>
-    <FormItem
-        field-name="备注"
-        placeholder="在这里输入备注"
-        @update:value="onUpdateRemark"/>
+    <div class="remark">
+      <FormItem
+          field-name="备注"
+          placeholder="在这里输入备注"
+          @update:value="onUpdateRemark"/>
+    </div>
     <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
 </template>
@@ -70,5 +72,9 @@ export default class Account extends Vue {
 .layout-content {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.remark {
+  padding: 12px 0;
 }
 </style>
