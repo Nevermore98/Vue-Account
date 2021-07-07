@@ -90,9 +90,5 @@ export default class Tags extends Vue {
       padding: 0 4px; // 下划线超出一部分
     }
   }
-
-  &.selected {
-
-  }
 }
 </style>

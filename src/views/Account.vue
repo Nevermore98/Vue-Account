@@ -1,5 +1,7 @@
 <template>
   <Layout class-prefix="layout">
+    {{ recordList }}
+
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
     <Types :value.sync="record.type"/>
     <div class="remark">
@@ -31,7 +33,6 @@ const tagList = tagListModel.fetch;
 })
 
 export default class Account extends Vue {
-
   tags = tagList;
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
