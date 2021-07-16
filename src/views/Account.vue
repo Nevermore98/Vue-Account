@@ -19,21 +19,23 @@ import NumberPad from '@/components/Account/NumberPad.vue';
 import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
 import {Component} from 'vue-property-decorator';
-import recordListModel from '@/models/recordListModel';
 import FormItem from '@/components/Account/FormItem.vue';
+import recordListModel from '@/models/recordListModel';
+import store from '@/store/index2';
 
 const recordList = recordListModel.fetch();
+
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
 })
 
 export default class Account extends Vue {
-  tags = window.tagList;
+  tags = store.tagList;
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
   };
-  recordList = window.recordList;
+  recordList = store.recordList;
 
 
   onUpdateTags(value: string[]) {
@@ -49,7 +51,7 @@ export default class Account extends Vue {
   }
 
   saveRecord() {
-    window.createRecord(this.record);
+    store.createRecord(this.record);
   }
 }
 
