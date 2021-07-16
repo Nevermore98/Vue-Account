@@ -20,7 +20,6 @@ import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
 import {Component, Watch} from 'vue-property-decorator';
 import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/tagListModel';
 import FormItem from '@/components/Account/FormItem.vue';
 
 const recordList = recordListModel.fetch();
