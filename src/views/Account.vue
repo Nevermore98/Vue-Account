@@ -1,7 +1,5 @@
 <template>
   <Layout class-prefix="layout">
-    {{ recordList }}
-
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
     <Types :value.sync="record.type"/>
     <div class="remark">
@@ -26,14 +24,13 @@ import tagListModel from '@/models/tagListModel';
 import FormItem from '@/components/Account/FormItem.vue';
 
 const recordList = recordListModel.fetch();
-const tagList = tagListModel.fetch;
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
 })
 
 export default class Account extends Vue {
-  tags = tagList;
+  tags = window.tagList;
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
   };
@@ -53,16 +50,12 @@ export default class Account extends Vue {
   }
 
   saveRecord() {
-    const tempRecord: RecordItem = recordListModel.clone(this.record);
-    tempRecord.createdAt = new Date();
-    this.recordList.push(tempRecord);
-    console.log(this.recordList);
-
+    recordListModel.create(this.record);
   }
 
   @Watch('recordList')
   onRecordListChange() {
-    recordListModel.save(this.recordList);
+    recordListModel.save();
   }
 }
 
