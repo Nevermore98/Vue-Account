@@ -20,10 +20,7 @@ import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/Account/FormItem.vue';
-import recordListModel from '@/models/recordListModel';
 import store from '@/store/index2';
-
-const recordList = recordListModel.fetch();
 
 
 @Component({
