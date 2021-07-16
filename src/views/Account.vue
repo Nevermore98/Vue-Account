@@ -18,7 +18,7 @@ import Vue from 'vue';
 import NumberPad from '@/components/Account/NumberPad.vue';
 import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
-import {Component, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import recordListModel from '@/models/recordListModel';
 import FormItem from '@/components/Account/FormItem.vue';
 
@@ -33,7 +33,7 @@ export default class Account extends Vue {
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
   };
-  recordList: RecordItem[] = recordList;
+  recordList = window.recordList;
 
 
   onUpdateTags(value: string[]) {
@@ -49,12 +49,7 @@ export default class Account extends Vue {
   }
 
   saveRecord() {
-    recordListModel.create(this.record);
-  }
-
-  @Watch('recordList')
-  onRecordListChange() {
-    recordListModel.save();
+    window.createRecord(this.record);
   }
 }
 
