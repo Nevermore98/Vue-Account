@@ -8,7 +8,7 @@
           placeholder="在这里输入备注"
           @update:value="onUpdateRemark"/>
     </div>
-    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -20,20 +20,25 @@ import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/Account/FormItem.vue';
-import store from '@/store/index2';
 
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
+  computed: {
+    recordList() {
+      return this.$store.state.recordList;
+    }
+  }
 })
 
 export default class Account extends Vue {
-  tags = store.tagList;
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
   };
-  recordList = store.recordList;
 
+  created() {
+    this.$store.commit('fetchRecords');
+  }
 
   onUpdateTags(value: string[]) {
     this.record.tags = value;
@@ -48,7 +53,7 @@ export default class Account extends Vue {
   }
 
   saveRecord() {
-    store.createRecord(this.record);
+    this.$store.commit('createRecord', this.record);
   }
 }
 
