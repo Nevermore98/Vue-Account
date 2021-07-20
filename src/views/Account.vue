@@ -24,14 +24,13 @@ import FormItem from '@/components/Account/FormItem.vue';
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
-  computed: {
-    recordList() {
-      return this.$store.state.recordList;
-    }
-  }
 })
 
 export default class Account extends Vue {
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+
   record: RecordItem = {
     tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
   };
