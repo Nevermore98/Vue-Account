@@ -1,8 +1,8 @@
 <template>
   <Layout class-prefix="layout">
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
-    <Types :data-source="recordTypeList"
-           :value.sync="record.type"/>
+    <Tabs :data-source="recordTypeList"
+          :value.sync="record.type"/>
     <div class="remark">
       <FormItem
           field-name="备注"
@@ -17,7 +17,6 @@
 /* eslint-disable no-undef */
 import Vue from 'vue';
 import NumberPad from '@/components/Account/NumberPad.vue';
-import Types from '@/components/Account/Types.vue';
 import Tags from '@/components/Account/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/Account/FormItem.vue';
@@ -26,7 +25,7 @@ import recordTypeList from '@/consts/recordTypeList';
 
 
 @Component({
-  components: {Tabs, Tags, FormItem, Types, NumberPad},
+  components: {Tabs, Tags, FormItem, NumberPad},
 })
 
 export default class Account extends Vue {
