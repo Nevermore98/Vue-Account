@@ -16,10 +16,10 @@
 <script lang="ts">
 /* eslint-disable no-undef */
 import Vue from 'vue';
-import NumberPad from '@/components/Account/NumberPad.vue';
-import Tags from '@/components/Account/Tags.vue';
+import NumberPad from '@/components/Bill/NumberPad.vue';
+import Tags from '@/components/Bill/Tags.vue';
 import {Component} from 'vue-property-decorator';
-import FormItem from '@/components/Account/FormItem.vue';
+import FormItem from '@/components/Bill/FormItem.vue';
 import Tabs from '@/components/Tabs.vue';
 import recordTypeList from '@/consts/recordTypeList';
 
@@ -28,7 +28,7 @@ import recordTypeList from '@/consts/recordTypeList';
   components: {Tabs, Tags, FormItem, NumberPad},
 })
 
-export default class Account extends Vue {
+export default class Bill extends Vue {
   recordTypeList = recordTypeList;
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0

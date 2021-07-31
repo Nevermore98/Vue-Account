@@ -20,7 +20,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import FormItem from '@/components/Account/FormItem.vue';
+import FormItem from '@/components/Bill/FormItem.vue';
 import Button from '@/components/Button.vue';
 
 @Component({
