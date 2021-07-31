@@ -3,13 +3,13 @@
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
     <Tabs :data-source="recordTypeList"
           :value.sync="record.type"/>
-    <div class="remark">
+    <div class="notes">
       <FormItem
+          :value.sync="record.notes"
           field-name="备注"
-          placeholder="在这里输入备注"
-          @update:value="onUpdateRemark"/>
+          placeholder="在这里输入备注"/>
     </div>
-    <Tags/>
+    <Tags @update:value="record.tags = $event"/>
   </Layout>
 </template>
 
@@ -29,46 +29,52 @@ import recordTypeList from '@/consts/recordTypeList';
 })
 
 export default class Account extends Vue {
+  recordTypeList = recordTypeList;
+  record: RecordItem = {
+    tags: [], notes: '', type: '-', amount: 0
+  };
+
   get recordList() {
     return this.$store.state.recordList;
   }
-
-  recordTypeList = recordTypeList;
-
-  record: RecordItem = {
-    tags: [], remarks: '', type: '-', amount: 0, createdAt: new Date(0)
-  };
 
   created() {
     this.$store.commit('fetchRecords');
   }
 
-  onUpdateTags(value: string[]) {
-    this.record.tags = value;
-  }
-
-  onUpdateRemark(value: string) {
-    this.record.remarks = value;
-  }
+  // onUpdateTags(value: Tag[]) {
+  //   this.record.tags = value;
+  // }
 
   onUpdateAmount(value: string) {
     this.record.amount = parseFloat(value);
   }
 
-  saveRecord() {
-    this.$store.commit('createRecord', this.record);
+  onUpdateNotes(value: string) {
+    this.record.notes = value;
   }
+
+  saveRecord() {
+    if (!this.record.tags || this.record.tags.length === 0) {
+      return window.alert('请至少选择一个标签');
+    }
+    this.$store.commit('createRecord', this.record);
+    window.alert('已保存');
+    this.record.notes = '';
+  }
+
+  // h = document.body.clientHeight;
 }
 
 </script>
-<!--不带 scoped -->
-<style lang="scss">
-.layout-content {
+
+<style lang="scss" scoped>
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.remark {
+.notes {
   padding: 12px 0;
 }
 </style>

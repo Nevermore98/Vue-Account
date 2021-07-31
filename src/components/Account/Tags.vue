@@ -28,7 +28,9 @@ export default class Tags extends mixins(TagHelper) {
 
   created() {
     this.$store.commit('fetchTags');
+
   }
+
 
   toggle(tag: string) {
     // 判断标签是否选中
