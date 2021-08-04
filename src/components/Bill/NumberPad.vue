@@ -20,7 +20,7 @@
 
       <button @click="inputContent">.</button>
       <button @click="inputContent">0</button>
-      <button class="createAt" @click="createAt">今天</button>
+      <button class="createdAt" @click="createdAt">今天</button>
       <button @click="equal">=</button>
       <button class="ok" @click="ok">完成</button>
     </div>
@@ -106,7 +106,7 @@ export default class NumberPad extends Vue {
     console.log(this.output);
   }
 
-  createAt() {
+  createdAt() {
     console.log('hello');
   }
 
@@ -153,7 +153,7 @@ export default class NumberPad extends Vue {
         font-size: 16px;
       }
 
-      &.createAt {
+      &.createdAt {
         font-size: 16px;
       }
 
