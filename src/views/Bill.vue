@@ -3,6 +3,15 @@
     <NumberPad @submit="saveRecord" @update:value="onUpdateAmount"/>
     <Tabs :data-source="recordTypeList"
           :value.sync="record.type"/>
+
+    <div class="createdAt">
+      <FormItem field-name="日期"
+                type="date"
+                placeholder="在这里输入日期"
+                :value.sync="record.createdAt"
+      />
+    </div>
+
     <div class="notes">
       <FormItem
           :value.sync="record.notes"
@@ -11,6 +20,7 @@
     </div>
     <Tags @update:value="record.tags = $event"/>
   </Layout>
+
 </template>
 
 <script lang="ts">
@@ -31,7 +41,7 @@ import recordTypeList from '@/consts/recordTypeList';
 export default class Bill extends Vue {
   recordTypeList = recordTypeList;
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0
+    tags: [], notes: '', type: '-', amount: 0, createdAt: new Date().toISOString()
   };
 
   get recordList() {
