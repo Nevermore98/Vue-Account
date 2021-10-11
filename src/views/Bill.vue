@@ -85,6 +85,10 @@ export default class Bill extends Vue {
 }
 
 .notes {
-  padding: 12px 0;
+  padding: 4px 0;
+}
+
+.createdAt {
+  padding: 4px 0;
 }
 </style>

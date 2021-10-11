@@ -7,6 +7,15 @@
 <style lang="scss">
 @import "~@/assets/styles/helper.scss";
 @import "~@/assets/styles/reset.scss";
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   font-family: $font-hei;
   line-height: 1.5;

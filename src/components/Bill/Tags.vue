@@ -4,7 +4,8 @@
       <button @click="createTag">新增标签</button>
     </div>
     <ul class="current">
-      <li v-for="tag in tagList" :key="tag.id"
+      <li v-for="tag in tagList"
+          :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)">{{ tag.name }}
       </li>
@@ -50,7 +51,7 @@ export default class Tags extends mixins(TagHelper) {
 <style lang="scss" scoped>
 .tags {
   background: white;
-  font-size: 14px;
+  font-size: 16px;
   padding: 16px;
   flex-grow: 1;
   display: flex;
@@ -64,7 +65,7 @@ export default class Tags extends mixins(TagHelper) {
     > li {
       $bg: #d9d9d9;
       background: $bg;
-      $h: 24px;
+      $h: 30px;
       height: $h;
       line-height: $h;
       border-radius: $h/2;
@@ -73,8 +74,7 @@ export default class Tags extends mixins(TagHelper) {
       margin-top: 4px;
 
       &.selected {
-        background: darken($bg, 50%);
-        color: white;
+        background: #888888;
       }
     }
   }

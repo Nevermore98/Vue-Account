@@ -1,7 +1,11 @@
 <template>
   <div class="numberPad">
     <!--使用空格占位-->
-    <div class="output">{{ '￥' + output || '&nbsp;' }}</div>
+
+    <div class="output">
+      <span class="dollar">￥</span>
+      {{ output || '&nbsp;' }}
+    </div>
     <div class="buttons">
       <button @click="inputContent">1</button>
       <button @click="inputContent">2</button>
@@ -11,18 +15,15 @@
       <button @click="inputContent">4</button>
       <button @click="inputContent">5</button>
       <button @click="inputContent">6</button>
-      <button @click="add">+</button>
+      <button @click="clear">清空</button>
 
       <button @click="inputContent">7</button>
       <button @click="inputContent">8</button>
       <button @click="inputContent">9</button>
-      <button @click="minus">-</button>
+      <button class="ok" @click="ok">完成</button>
 
       <button @click="inputContent">.</button>
-      <button @click="inputContent">0</button>
-      <button class="createdAt" @click="createdAt">今天</button>
-      <button @click="equal">=</button>
-      <button class="ok" @click="ok">完成</button>
+      <button class="zero" @click="inputContent">0</button>
     </div>
   </div>
 </template>
@@ -58,19 +59,6 @@ export default class NumberPad extends Vue {
       if (this.output.indexOf('.') >= 0 && input === '.') {return;}
       this.output += input;
     }
-
-    //   if (this.output === '0') {
-    //     if ('0123456789'.indexOf(input) >= 0) {
-    //       // 0~9 ：直接输入赋值给输出
-    //       this.output = input;
-    //     } else {
-    //       // 其余（点）：输出加点
-    //       this.output += input;
-    //     }
-    //     return;
-    //   }
-    //   if (this.output.indexOf('.') >= 0 && input === '.') {return;}
-    //   this.output += input;
   }
 
   remove() {
@@ -90,26 +78,6 @@ export default class NumberPad extends Vue {
     this.$emit('submit', this.output);
     this.output = '0';
   }
-
-  add() {
-    let output = parseFloat(this.output);
-    this.output += output;
-    console.log(this.output);
-  }
-
-  minus() {
-    console.log(this.output);
-
-  }
-
-  equal() {
-    console.log(this.output);
-  }
-
-  createdAt() {
-    console.log('hello');
-  }
-
 }
 
 </script>
@@ -119,48 +87,94 @@ export default class NumberPad extends Vue {
   @import "~@/assets/styles/helper.scss";
 
   .output {
-    @extend %clearFix;
-    @extend %innerShadow;
-    font-size: 36px;
-    font-family: Consolas, monospace;
-    padding: 9px 16px;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    background: white;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: left;
+    padding: 10px 16px;
+
+    .dollar {
+      font-size: 28px;
+    }
+
+    @media (max-height: 570px) {
+      & {
+        line-height: 68px;
+      }
+    }
   }
 
 
   .buttons {
+
     @extend %clearFix;
-    display: flex;
-    flex-wrap: wrap;
+    height: 100%;
+    padding: 4px;
+
+    //> button {
+    //  flex-basis: 25%;
+    //  height: 60px;
+    //  border: 1px solid #F5F5F5;
+    //  font-size: 20px;
+    //
+    //  //box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);
+    //  //border-radius: 10px;
+    //  //margin: 1px 1px;
+    //
+    //  &.remove {
+    //    font-size: 16px;
+    //  }
+    //
+    //  &.ok {
+    //    float: right;
+    //    height: 128px;
+    //    opacity: 1;
+    //  }
+    //
+    //  &.createdAt {
+    //    font-size: 16px;
+    //  }
+    //
+    //  $bg: #f2f2f2;
+    //
+    //  &:active {
+    //    background: #C4C4C4;
+    //  }
+    //}
 
     > button {
-      flex-basis: 25%;
-      height: 60px;
-      border: 1px solid #F5F5F5;
       font-size: 20px;
-
-      //box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);
-      //border-radius: 10px;
-      //margin: 1px 1px;
-
-      &.remove {
-        font-size: 16px;
-      }
+      font-weight: bold;
+      height: 64px;
+      float: left;
+      width: 25%;
+      border: 4px solid #f5f5f5;
+      border-radius: 8px;
+      background: white;
 
       &.ok {
-        color: white;
-        background: #333333;
-        font-size: 16px;
+        float: right;
+        height: 128px;
       }
 
-      &.createdAt {
-        font-size: 16px;
+      &.zero {
+        width: 50%;
       }
-
-      $bg: #f2f2f2;
 
       &:active {
-        background: #C4C4C4;
+        background: #F5F5F5;
+      }
+    }
+
+    @media (max-height: 570px) {
+      > button {
+        height: 56px;
+
+        &.ok {
+          height: 112px;
+        }
       }
     }
 

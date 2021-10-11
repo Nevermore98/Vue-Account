@@ -28,6 +28,7 @@ export default {
   @extend %outerShadow;
   display: flex;
   flex-direction: row;
+  background-color: white;
 
   > .item {
     padding: 2px 0;
@@ -36,15 +37,22 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    color: #909090;
 
     .icon {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
+      fill: #909090;
     }
   }
 
   > .item.selected {
-    color: $color-highlight;
+    color: black;
+
+    .icon {
+      fill: black;
+    }
   }
 }
 </style>

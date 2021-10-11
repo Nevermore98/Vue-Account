@@ -97,6 +97,7 @@ export default class Statistics extends Vue {
 
 <style lang="scss" scoped>
 
+
 .noResult {
   padding: 16px;
   text-align: center;
@@ -104,7 +105,7 @@ export default class Statistics extends Vue {
 
 ::v-deep {
   .type-tabs-item {
-    background: #C4C4C4;
+    background: #d9d9d9;
 
     &.selected {
       background: #F5F5F5;
